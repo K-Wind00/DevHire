@@ -7,5 +7,5 @@ export declare class Offer {
     salary: string;
     isActive: boolean;
     companyPhoto: string;
-    users: User;
+    user: User;
 }

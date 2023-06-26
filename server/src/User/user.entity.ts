@@ -32,9 +32,9 @@ export class User {
     @Column()
     skills: string
 
-    @ManyToMany(() => Offer, offer => offer.users)
+    @ManyToMany(() => Offer, offer => offer.user)
     @JoinTable()
-    offers: Offer
+    offer: Offer
 
     
 }

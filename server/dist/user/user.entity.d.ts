@@ -11,6 +11,6 @@ export declare class User {
     email: string;
     role: UserRole;
     skills: string;
-    offers: Offer;
+    offer: Offer;
 }
 export {};

@@ -49,10 +49,10 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "skills", void 0);
 __decorate([
-    (0, typeorm_1.ManyToMany)(() => offer_entity_1.Offer, offer => offer.users),
+    (0, typeorm_1.ManyToMany)(() => offer_entity_1.Offer, offer => offer.user),
     (0, typeorm_1.JoinTable)(),
     __metadata("design:type", offer_entity_1.Offer)
-], User.prototype, "offers", void 0);
+], User.prototype, "offer", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);

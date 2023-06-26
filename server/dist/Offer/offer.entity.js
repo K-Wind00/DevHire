@@ -43,9 +43,9 @@ __decorate([
     __metadata("design:type", String)
 ], Offer.prototype, "companyPhoto", void 0);
 __decorate([
-    (0, typeorm_1.ManyToMany)(() => user_entity_1.User, user => user.offers),
+    (0, typeorm_1.ManyToMany)(() => user_entity_1.User, user => user.offer),
     __metadata("design:type", user_entity_1.User)
-], Offer.prototype, "users", void 0);
+], Offer.prototype, "user", void 0);
 exports.Offer = Offer = __decorate([
     (0, typeorm_1.Entity)()
 ], Offer);

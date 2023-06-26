@@ -25,7 +25,7 @@ export class Offer {
     @Column()
     companyPhoto: string
 
-    @ManyToMany(() => User, user => user.offers)
-    users: User
+    @ManyToMany(() => User, user => user.offer)
+    user: User
     
 }

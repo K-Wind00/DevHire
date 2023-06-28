@@ -1,106 +1,54 @@
-import React from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const NavbarComponent = () => {
-  
-  const handleDropdownHover = () => {
-    const dropdownMenu = document.getElementById('dropdown-menu')
-    dropdownMenu.style.display = 'block'
-  }
-  
-  const handleDropdownLeave = () => {
-    const dropdownMenu = document.getElementById('dropdown-menu')
-    dropdownMenu.style.display = 'none'
-  }
-  
+const NavbarComponent = ({ handleLoginModalOpen, handleRegisterModalOpen }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
-    <Router>
-    <nav style={navbarStyle}>
-      <div style={logoStyle}>Logo</div>
-      <div style={actionsStyle}>
-        <button style={buttonStyle}>PUBLIKUJ</button>
-        <div
-          style={dropdownStyle}
-          onMouseEnter={handleDropdownHover}
-          onMouseLeave={handleDropdownLeave}
+    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <div className='container'>
+        <Link className='navbar-brand' to='/'>
+          Logo
+        </Link>
+
+        <button
+          className='navbar-toggler'
+          type='button'
+          onClick={handleDropdownToggle}
         >
-          <button style={dropdownToggleStyle}>ZALOGUJ</button>
-          <div id="dropdown-menu" style={dropdownMenuStyle}>
-            <Link to="/login" style={linkStyle}>
-              Login
-            </Link>
-            <Link to="/register" style={linkStyle}>
-              Register
-            </Link>
-            <Link to="/login-company" style={linkStyle}>
-              Login as company
-            </Link>
-            <Link to="/register-company" style={linkStyle}>
-              Register as company
-            </Link>
-          </div>
+          <span className='navbar-toggler-icon'></span>
+        </button>
+
+        <div className={`collapse navbar-collapse ${dropdownOpen ? 'show' : ''}`}>
+          <ul className='navbar-nav ms-auto'>
+            <li className='nav-item'>
+              <Link className='nav-link active' to='/'>
+                Publikuj
+              </Link>
+            </li>
+            <li className='nav-item dropdown'>
+              <div className='nav-link dropdown-toggle' onClick={handleDropdownToggle}>
+                Zaloguj
+              </div>
+              <div className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
+                <Link className='dropdown-item' to='/login' onClick={handleLoginModalOpen}>
+                  Zaloguj
+                </Link>
+                <Link className='dropdown-item' to='/register' onClick={handleRegisterModalOpen}>
+                  Zarejestruj
+                </Link>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
-    </Router>
-  )
-}
+  );
+};
 
-export default NavbarComponent
-
-const navbarStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  backgroundColor: 'black',
-  margin: '0',
-  color: '#fff',
-  padding: '10px',
-}
-
-const logoStyle = {
-  fontSize: '20px',
-  fontWeight: 'bold',
-}
-
-const actionsStyle = {
-  display: 'flex',
-  alignItems: 'center',
-}
-
-const buttonStyle = {
-  backgroundColor: '#007bff',
-  color: '#fff',
-  border: 'none',
-  padding: '8px 16px',
-  marginRight: '10px',
-  cursor: 'pointer',
-}
-
-const dropdownStyle = {
-  position: 'relative',
-}
-
-const dropdownToggleStyle = {
-  backgroundColor: 'transparent',
-  color: '#fff',
-  border: 'none',
-  cursor: 'pointer',
-}
-
-const dropdownMenuStyle = {
-  position: 'absolute',
-  top: '100%',
-  right: 0,
-  backgroundColor: '#333',
-  color: '#fff',
-  padding: '8px',
-  display: 'none',
-}
-
-const linkStyle = {
-  display: 'block',
-  color: '#fff',
-  textDecoration: 'none',
-  marginBottom: '4px',
-}
+export default NavbarComponent;

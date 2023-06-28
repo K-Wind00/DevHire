@@ -11,6 +11,11 @@ const OfferListComponent = () => {
     { id: 5, title: 'Offer 5', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
     { id: 6, title: 'Offer 6', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
     { id: 7, title: 'Offer 7', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
+    { id: 7, title: 'Offer 7', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
+    { id: 7, title: 'Offer 7', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
+    { id: 7, title: 'Offer 7', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
+    { id: 7, title: 'Offer 7', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
+
     { id: 8, title: 'Offer 8', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
     { id: 9, title: 'Offer 9', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
     { id: 10, title: 'Offer 10', companyName: 'Company B', categories: 'Category B', salary: '2000', companyPhoto: 'company-b.jpg' },
@@ -39,9 +44,8 @@ const OfferListComponent = () => {
   };
 
   return (
-    <div>
-    <div className="offer-list">
-      <h2>Offers</h2>
+    <div style={{ marginTop: '30px'}}>
+    <div className="offer-list" >
       {getDisplayedOffers().map((offer) => (
         <OfferComponent
          key={offer.id}

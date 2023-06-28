@@ -20,16 +20,8 @@ const SearchComponent = () => {
 
   return (
     <div className="search-component" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#333", height: "15vh" }}>
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          className="form-control"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          onKeyDown={handleKeyPress}
-          style={{ width: '300px' }}
-          placeholder="Search offers..."
-        />
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{ width: '600px'}}></input>
       </form>
     </div>
   );

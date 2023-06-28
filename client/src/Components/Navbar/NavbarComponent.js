@@ -1,30 +1,106 @@
-import React from 'react';
-import { Navbar, Nav, Button, Dropdown } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 const NavbarComponent = () => {
+  
+  const handleDropdownHover = () => {
+    const dropdownMenu = document.getElementById('dropdown-menu')
+    dropdownMenu.style.display = 'block'
+  }
+  
+  const handleDropdownLeave = () => {
+    const dropdownMenu = document.getElementById('dropdown-menu')
+    dropdownMenu.style.display = 'none'
+  }
+  
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">Logo</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto"></Nav>
-        <Nav>
-          <Button variant="primary">PUBLIKUJ</Button>
-          <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              ZALOGUJ
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#action1">Opcja 1</Dropdown.Item>
-              <Dropdown.Item href="#action2">Opcja 2</Dropdown.Item>
-              <Dropdown.Item href="#action3">Opcja 3</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
-};
+    <Router>
+    <nav style={navbarStyle}>
+      <div style={logoStyle}>Logo</div>
+      <div style={actionsStyle}>
+        <button style={buttonStyle}>PUBLIKUJ</button>
+        <div
+          style={dropdownStyle}
+          onMouseEnter={handleDropdownHover}
+          onMouseLeave={handleDropdownLeave}
+        >
+          <button style={dropdownToggleStyle}>ZALOGUJ</button>
+          <div id="dropdown-menu" style={dropdownMenuStyle}>
+            <Link to="/login" style={linkStyle}>
+              Login
+            </Link>
+            <Link to="/register" style={linkStyle}>
+              Register
+            </Link>
+            <Link to="/login-company" style={linkStyle}>
+              Login as company
+            </Link>
+            <Link to="/register-company" style={linkStyle}>
+              Register as company
+            </Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+    </Router>
+  )
+}
 
-export default NavbarComponent;
+export default NavbarComponent
+
+const navbarStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: 'black',
+  margin: '0',
+  color: '#fff',
+  padding: '10px',
+}
+
+const logoStyle = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+}
+
+const actionsStyle = {
+  display: 'flex',
+  alignItems: 'center',
+}
+
+const buttonStyle = {
+  backgroundColor: '#007bff',
+  color: '#fff',
+  border: 'none',
+  padding: '8px 16px',
+  marginRight: '10px',
+  cursor: 'pointer',
+}
+
+const dropdownStyle = {
+  position: 'relative',
+}
+
+const dropdownToggleStyle = {
+  backgroundColor: 'transparent',
+  color: '#fff',
+  border: 'none',
+  cursor: 'pointer',
+}
+
+const dropdownMenuStyle = {
+  position: 'absolute',
+  top: '100%',
+  right: 0,
+  backgroundColor: '#333',
+  color: '#fff',
+  padding: '8px',
+  display: 'none',
+}
+
+const linkStyle = {
+  display: 'block',
+  color: '#fff',
+  textDecoration: 'none',
+  marginBottom: '4px',
+}

@@ -27,7 +27,7 @@ const NavbarComponent = ({ handleLoginModalOpen, handleRegisterModalOpen }) => {
         <div className={`collapse navbar-collapse ${dropdownOpen ? 'show' : ''}`}>
           <ul className='navbar-nav ms-auto'>
             <li className='nav-item'>
-              <Link className='nav-link active' to='/'>
+              <Link className='nav-link active' to='/addOffer'>
                 Publikuj
               </Link>
             </li>

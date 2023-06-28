@@ -6,6 +6,7 @@ import MainPanelComponent from './Components/Main/MainPanelComponent';
 import Footer from './Components/Footer/FooterComponent';
 import LoginForm from './Components/Forms/LoginForm';
 import RegisterForm from './Components/Forms/RegisterForm';
+import AddOfferForm from './Components/Forms/AddOfferForm';
 
 function App() {
   const [, setShowModal] = useState(false);
@@ -23,6 +24,7 @@ function App() {
       <Router>
         <NavbarComponent handleModalOpen={handleModalOpen} handleModalClose={handleModalClose} />
         <Routes>
+          <Route path='/addOffer' element={<AddOfferForm handleModalClose={handleModalClose} />} />
           <Route path='/login' element={<LoginForm handleModalClose={handleModalClose} />} />
           <Route path='/register' element={<RegisterForm handleModalClose={handleModalClose} />} />
         </Routes>

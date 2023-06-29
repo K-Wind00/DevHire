@@ -28,7 +28,6 @@ function App() {
           <Route path='/login' element={<LoginForm handleModalClose={handleModalClose} />} />
           <Route path='/register' element={<RegisterForm handleModalClose={handleModalClose} />} />
         </Routes>
-        <SearchPanelComponent></SearchPanelComponent>
         <MainPanelComponent></MainPanelComponent>
         <Footer></Footer>
       </Router>

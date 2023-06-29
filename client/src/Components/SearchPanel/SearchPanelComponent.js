@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SearchComponent = () => {
+const SearchPanelComponent = ({ handleSearch }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (e) => {
@@ -15,16 +15,16 @@ const SearchComponent = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    console.log('Search:', searchQuery);
+    handleSearch(searchQuery);
   };
 
   return (
     <div className="search-component" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#333", height: "15vh" }}>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{ width: '600px'}}></input>
+      <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{ width: '600px' }} value={searchQuery} onChange={handleSearchChange} onKeyPress={handleKeyPress} />
       </form>
     </div>
   );
 };
 
-export default SearchComponent;
+export default SearchPanelComponent;

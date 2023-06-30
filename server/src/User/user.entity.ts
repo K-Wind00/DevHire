@@ -1,5 +1,4 @@
-import { Offer } from "src/Offer/offer.entity";
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 enum UserRole {
     ADMIN = 'admin',
@@ -28,13 +27,5 @@ export class User {
         default: UserRole.USER
     })
     role: UserRole
-
-    @Column()
-    skills: string
-
-    @ManyToMany(() => Offer, offer => offer.user)
-    @JoinTable()
-    offer: Offer
-
     
 }

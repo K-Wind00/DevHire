@@ -1,31 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Body, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
-import { RegisterUserDto } from './dto/user-register';
-import * as bcrypt from 'bcrypt';
+import { RegisterUserDto } from './dto/register-user';
+import * as bcrypt from 'bcrypt'
+import { SignUpDto } from 'src/lib/dto/sign-up.dto';
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
-  ) {}
 
-  async findOne(username: string): Promise<User | undefined> {
-    return await this.userRepository.findOneBy({ username })
-  }
+    constructor(@InjectRepository(User) private userRepository: Repository<User> ) {}
 
-  async create(userData: RegisterUserDto): Promise<User | any> {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(userData.password, salt);
+    async create(signUpDto: SignUpDto) {
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(signUpDto.password, salt)
 
-    const user = new User();
+        const user = this.userRepository.create({ ...signUpDto, password: hashedPassword  })
 
-    user.username = userData.username;
-    user.password = hashedPassword;
-    user.email = userData.email;
+        return await this.userRepository.save(user)
 
-    return this.userRepository.save(user);
-  }
+    }
+
+    async findOne(username: string): Promise<User | any> {
+       await this.userRepository.findOne({ where: { username } })
+    }
+
+    async getAll() {
+        return await this.userRepository.find()
+    }
 }

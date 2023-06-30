@@ -1,9 +1,7 @@
-import { User } from "src/User/user.entity"
-import { Entity, PrimaryGeneratedColumn, Column , ManyToMany} from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Offer {
-
     @PrimaryGeneratedColumn()
     id: number
 
@@ -19,13 +17,25 @@ export class Offer {
     @Column()
     salary: string
 
+    @Column()
+    localization: string
+
+    @Column()
+    country: string
+
+    @Column()
+    contract: string
+
+    @Column()
+    seniority: string
+
+    @Column()
+    description: string
+
     @Column({ default: true })
     isActive: boolean
 
-    @Column()
+    @Column({ nullable: true, default: 'defaultCompany.jpg'})
     companyPhoto: string
 
-    @ManyToMany(() => User, user => user.offer)
-    user: User
-    
 }

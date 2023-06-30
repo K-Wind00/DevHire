@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Offer = void 0;
-const user_entity_1 = require("../User/user.entity");
 const typeorm_1 = require("typeorm");
 let Offer = exports.Offer = class Offer {
 };
@@ -35,17 +34,33 @@ __decorate([
     __metadata("design:type", String)
 ], Offer.prototype, "salary", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Offer.prototype, "localization", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Offer.prototype, "country", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Offer.prototype, "contract", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Offer.prototype, "seniority", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Offer.prototype, "description", void 0);
+__decorate([
     (0, typeorm_1.Column)({ default: true }),
     __metadata("design:type", Boolean)
 ], Offer.prototype, "isActive", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true, default: 'defaultCompany.jpg' }),
     __metadata("design:type", String)
 ], Offer.prototype, "companyPhoto", void 0);
-__decorate([
-    (0, typeorm_1.ManyToMany)(() => user_entity_1.User, user => user.offer),
-    __metadata("design:type", user_entity_1.User)
-], Offer.prototype, "user", void 0);
 exports.Offer = Offer = __decorate([
     (0, typeorm_1.Entity)()
 ], Offer);

@@ -1,4 +1,3 @@
-import { Offer } from "src/Offer/offer.entity";
 declare enum UserRole {
     ADMIN = "admin",
     USER = "user",
@@ -10,7 +9,5 @@ export declare class User {
     password: string;
     email: string;
     role: UserRole;
-    skills: string;
-    offer: Offer;
 }
 export {};

@@ -8,9 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OfferModule = void 0;
 const common_1 = require("@nestjs/common");
+const offer_service_1 = require("./offer.service");
+const offer_controller_1 = require("./offer.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const offer_entity_1 = require("./offer.entity");
 let OfferModule = exports.OfferModule = class OfferModule {
 };
 exports.OfferModule = OfferModule = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([offer_entity_1.Offer])],
+        providers: [offer_service_1.OfferService],
+        controllers: [offer_controller_1.OfferController],
+        exports: [offer_service_1.OfferService]
+    })
 ], OfferModule);
 //# sourceMappingURL=offer.module.js.map

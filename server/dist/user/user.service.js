@@ -22,17 +22,17 @@ let UserService = exports.UserService = class UserService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
-    async findOne(username) {
-        return await this.userRepository.findOneBy({ username });
-    }
-    async create(userData) {
+    async create(signUpDto) {
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(userData.password, salt);
-        const user = new user_entity_1.User();
-        user.username = userData.username;
-        user.password = hashedPassword;
-        user.email = userData.email;
-        return this.userRepository.save(user);
+        const hashedPassword = await bcrypt.hash(signUpDto.password, salt);
+        const user = this.userRepository.create({ ...signUpDto, password: hashedPassword });
+        return await this.userRepository.save(user);
+    }
+    async findOne(username) {
+        await this.userRepository.findOne({ where: { username } });
+    }
+    async getAll() {
+        return await this.userRepository.find();
     }
 };
 exports.UserService = UserService = __decorate([

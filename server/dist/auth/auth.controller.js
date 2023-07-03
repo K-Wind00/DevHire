@@ -18,6 +18,7 @@ const auth_service_1 = require("./auth.service");
 const sign_in_dto_1 = require("../lib/dto/sign-in.dto");
 const local_auth_guard_1 = require("./local-auth.guard");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
+const sign_up_dto_1 = require("../lib/dto/sign-up.dto");
 let AuthController = exports.AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -25,8 +26,8 @@ let AuthController = exports.AuthController = class AuthController {
     signIn(signInDto) {
         return this.authService.signIn(signInDto);
     }
-    async signUp(req) {
-        return await this.authService.signUp(req);
+    async signUp(signUpDto) {
+        return await this.authService.signUp(signUpDto);
     }
     getProfile(req) {
         return req.user;
@@ -42,10 +43,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "signIn", null);
 __decorate([
+    (0, common_1.UseGuards)(local_auth_guard_1.LocalAuthGuard),
+    (0, common_1.HttpCode)(201),
     (0, common_1.Post)('/auth/register'),
-    __param(0, (0, common_1.Request)()),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [sign_up_dto_1.SignUpDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signUp", null);
 __decorate([

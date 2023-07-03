@@ -6,7 +6,7 @@ import { LiaFileContractSolid } from 'react-icons/lia'
 export const Jobs = ({ filteredData }) => {
     return (
       <div>
-        <div className='jobContainer flex gap-10 justify-center flex-wrap items-center py-10'>
+        <div className='jobContainer flex gap-10 bg-[#ddd] justify-center flex-wrap items-center py-10'>
           {filteredData &&
             filteredData.map((item) => (
               <div

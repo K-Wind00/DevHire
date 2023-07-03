@@ -51,7 +51,7 @@
     }
   
     return (
-      <div className='w-[85%] m-auto bg-white'>
+      <div className='w-[85%] m-auto bg-[#ddd]'>
         <Navbar />
         <Search onDataFiltered={handleDataFiltered} />
         <Jobs filteredData={filteredData} />

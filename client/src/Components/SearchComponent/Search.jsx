@@ -34,9 +34,9 @@ export const Search = ({ onDataFiltered }) => {
     
   
     return (
-      <div className='searchDiv grid gap-10 bg-greyIsh rounded-[10px] p-[3rem]'>
+      <div className='searchDiv grid gap-10 bg-greyIsh rounded-[15px] p-[3rem]'>
         <form onSubmit={handleSearch}>
-          <div className='firstDiv flex justify-between items-center rounded-[8px] gap-[10px] bg-white p-5 shadow-1g shadow-greyIsh-700'>
+          <div className='firstDiv flex justify-between items-center rounded-[15px] gap-[10px] bg-white p-5 shadow-1g shadow-greyIsh-700'>
             <div className='flex gap-2 items-center'>
               <AiOutlineSearch className='text-[25px] icon' />
               <input

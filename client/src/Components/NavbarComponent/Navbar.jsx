@@ -35,7 +35,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="navBar flex justify-between items-center p-6">
+    <div className="navBar flex justify-between bg-[#ddd] items-center p-6">
       <div className="logoDiv">
         <h1 className="logo text-3xl text-blue-500 font-bold">
           <strong>Dev</strong>Hire

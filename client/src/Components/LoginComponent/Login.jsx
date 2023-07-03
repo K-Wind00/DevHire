@@ -5,6 +5,7 @@ export const Login = ({ onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value)
@@ -13,7 +14,6 @@ export const Login = ({ onClose, onLoginSuccess }) => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value)
   }
-  
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -24,6 +24,7 @@ export const Login = ({ onClose, onLoginSuccess }) => {
       const { access_token } = response.data
       localStorage.setItem('access_token', access_token)
 
+      setIsLoggedIn(true)
       onLoginSuccess(username)
     } catch (error) {
       setError('Invalid user data! Try again')
@@ -35,6 +36,10 @@ export const Login = ({ onClose, onLoginSuccess }) => {
     setPassword('')
     setError('')
     onClose()
+  }
+
+  if (isLoggedIn) {
+    return null
   }
 
   return (
@@ -91,6 +96,7 @@ export const Login = ({ onClose, onLoginSuccess }) => {
             Sign In
           </button>
         </form>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
       </div>
     </div>
   )
